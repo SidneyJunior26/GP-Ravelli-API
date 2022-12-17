@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Flunt" Version="2.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pomelo.EntityFrameworkCore.MySql" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Infra\" />
+    <None Remove="Infra\Data\" />
+    <None Remove="Domain\" />
+    <None Remove="Domain\Eventos\" />
+    <None Remove="Domain\Cortesias\" />
+    <None Remove="Endpoints\" />
+    <None Remove="Endpoints\Atletas\" />
+    <None Remove="Endpoints\Atletas\Get\" />
+    <None Remove="Endpoints\Atletas\Post\" />
+    <None Remove="Dapper" />
+    <None Remove="Endpoints\Atletas\Delete\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Athletes\" />
+    <None Remove="Endpoints\Atletas\Put\" />
+    <None Remove="Flunt" />
+    <None Remove="Endpoints\Events\" />
+    <None Remove="Endpoints\Events\Get\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infra\" />
+    <Folder Include="Infra\Data\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Domain\Eventos\" />
+    <Folder Include="Domain\Cortesias\" />
+    <Folder Include="Endpoints\" />
+    <Folder Include="Endpoints\Atletas\" />
+    <Folder Include="Endpoints\Atletas\Post\" />
+    <Folder Include="Endpoints\Atletas\Delete\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Athletes\" />
+    <Folder Include="Endpoints\Atletas\Put\" />
+    <Folder Include="Endpoints\Events\" />
+    <Folder Include="Endpoints\Events\Get\" />
+  </ItemGroup>
+</Project>
