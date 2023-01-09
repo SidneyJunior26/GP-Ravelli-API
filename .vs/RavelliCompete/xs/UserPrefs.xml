@@ -1,10 +1,5 @@
 ﻿<Properties StartupConfiguration="{CA6A5905-BED6-41D9-BB7A-876C8340AE59}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.RavelliCompete PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="RavelliCompete/Endpoints/Atletas/AthleteRequest.cs">
     <Files>
       <File FileName="RavelliCompete/Endpoints/Events/Get/EventGyById.cs" Line="23" Column="1" />
@@ -38,5 +33,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.src PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
