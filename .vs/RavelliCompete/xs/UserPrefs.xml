@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{CA6A5905-BED6-41D9-BB7A-876C8340AE59}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.RavelliCompete PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RavelliCompete/Endpoints/Atletas/AthleteRequest.cs">
+    <Files>
+      <File FileName="RavelliCompete/Endpoints/Events/Get/EventGyById.cs" Line="23" Column="1" />
+      <File FileName="RavelliCompete/Program.cs" />
+      <File FileName="RavelliCompete/Endpoints/Events/Get/EventGetAllActives.cs" />
+      <File FileName="RavelliCompete/Endpoints/Events/Get/EventGetAll.cs" Line="13" Column="62" />
+      <File FileName="RavelliCompete/Endpoints/Atletas/Get/AthletesGetByCpf.cs" Line="16" Column="57" />
+      <File FileName="RavelliCompete/Endpoints/Atletas/Post/AthletePost.cs" Line="19" Column="34" />
+      <File FileName="RavelliCompete/Domain/Athletes/Athlete.cs" Line="55" Column="28" />
+      <File FileName="RavelliCompete/Endpoints/Atletas/AthleteRequest.cs" Line="13" Column="35" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RavelliCompete" expanded="True">
+            <Node name="RavelliCompete" expanded="True">
+              <Node name="Domain" expanded="True">
+                <Node name="Athletes" expanded="True" />
+              </Node>
+              <Node name="Endpoints" expanded="True">
+                <Node name="Atletas" expanded="True">
+                  <Node name="Post" expanded="True" />
+                </Node>
+                <Node name="Events" expanded="True">
+                  <Node name="Get" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
