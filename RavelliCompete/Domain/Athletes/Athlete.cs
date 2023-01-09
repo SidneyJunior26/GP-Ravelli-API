@@ -52,7 +52,7 @@ public class Athlete : Notifiable<Notification>
     public string? Federacao { get; set; }
     public Athlete() { }
 
-    public Athlete(AthletePostRequest athlete)
+    public Athlete(AthleteRequest athlete)
     {
         Id = new Guid().ToString();
 
