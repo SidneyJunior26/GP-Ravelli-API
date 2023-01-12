@@ -21,6 +21,7 @@ Execute `dotnet run` para um servidor de desenvolvimento. Navegue até `http://l
 * `Consulta de Atletas`
 * `Consulta de Atleta pelo CPF`
 * `Consulta de Atleta por ID`
+* `Confirmação de Usuário e Senha`
 
 * `Consulta de Eventos`
 * `Consulta de Eventos Ativos`
