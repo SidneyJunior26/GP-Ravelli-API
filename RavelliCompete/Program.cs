@@ -2,7 +2,9 @@
 using RavelliCompete.Endpoints.Atletas.Delete;
 using RavelliCompete.Endpoints.Atletas.Get;
 using RavelliCompete.Endpoints.Atletas.GetAll;
+using RavelliCompete.Endpoints.Atletas.GetConfirmPassword;
 using RavelliCompete.Endpoints.Atletas.Post;
+using RavelliCompete.Endpoints.Atletas.Put;
 using RavelliCompete.Endpoints.Events.Get;
 using RavelliCompete.Infra.Data;
 using RavelliCompete.Services.Athletes;
@@ -54,8 +56,11 @@ app.UseHttpsRedirection();
 app.MapMethods(AthletesGetAll.Template, AthletesGetAll.Methods, AthletesGetAll.Handler);
 app.MapMethods(AthletesGetByCpf.Template, AthletesGetByCpf.Methods, AthletesGetByCpf.Handler);
 app.MapMethods(AthletesGetById.Template, AthletesGetById.Methods, AthletesGetById.Handler);
+app.MapMethods(AthleteConfirmPassword.Template, AthleteConfirmPassword.Methods, AthleteConfirmPassword.Handler);
 
 app.MapMethods(AthletePost.Template, AthletePost.Methods, AthletePost.Handler);
+
+app.MapMethods(AthletePut.Template, AthletePut.Methods, AthletePut.Handler);
 
 app.MapMethods(AthleteDelete.Template, AthleteDelete.Methods, AthleteDelete.Handler);
 

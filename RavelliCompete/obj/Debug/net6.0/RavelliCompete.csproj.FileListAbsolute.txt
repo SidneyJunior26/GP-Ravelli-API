@@ -1,10 +1,3 @@
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.csproj.AssemblyReference.cache
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.GeneratedMSBuildEditorConfig.editorconfig
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.AssemblyInfoInputs.cache
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.AssemblyInfo.cs
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.csproj.CoreCompileInputs.cache
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.MvcApplicationPartsAssemblyInfo.cs
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.MvcApplicationPartsAssemblyInfo.cache
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/appsettings.Development.json
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/appsettings.json
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/RavelliCompete
@@ -12,6 +5,8 @@
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/RavelliCompete.runtimeconfig.json
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/RavelliCompete.dll
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/RavelliCompete.pdb
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Dapper.dll
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Flunt.dll
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Humanizer.dll
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -24,6 +19,13 @@
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.csproj.AssemblyReference.cache
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.AssemblyInfoInputs.cache
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.AssemblyInfo.cs
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.csproj.CoreCompileInputs.cache
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.MvcApplicationPartsAssemblyInfo.cs
+/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.MvcApplicationPartsAssemblyInfo.cache
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/staticwebassets/msbuild.RavelliCompete.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/staticwebassets/msbuild.build.RavelliCompete.props
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.RavelliCompete.props
@@ -38,5 +40,3 @@
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.pdb
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/RavelliCompete.genruntimeconfig.cache
 /Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/Debug/net6.0/ref/RavelliCompete.dll
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Dapper.dll
-/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/bin/Debug/net6.0/Flunt.dll

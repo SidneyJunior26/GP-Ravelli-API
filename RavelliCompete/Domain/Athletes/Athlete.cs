@@ -136,7 +136,6 @@ public class Athlete : Notifiable<Notification>
             .IsNotNullOrEmpty(this.Nome, "nome")
             .IsNotNullOrEmpty(this.Nascimento.ToString(), "nascimento")
             .IsNotNullOrEmpty(this.Sexo, "sexo")
-            .IsNotNullOrEmpty(this.Responsavel, "responsavel")
             .IsNotNullOrEmpty(this.Endereco, "endereco")
             .IsNotNullOrEmpty(this.Numero, "numero")
             .IsNotNullOrEmpty(this.Cep, "cep")
@@ -146,10 +145,9 @@ public class Athlete : Notifiable<Notification>
             .IsNotNullOrEmpty(this.Telefone, "telefone")
             .IsNotNullOrEmpty(this.Celular, "celular")
             .IsEmail(this.Email, "email")
-            .IsNullOrEmpty(this.EmergenciaContato, "emergencia_contato")
-            .IsNullOrEmpty(this.EmergenciaFone, "emergencia_fone")
-            .IsNullOrEmpty(this.EmergenciaCelular, "emergencia_celular")
-            .IsNullOrEmpty(this.Nascimento.ToString(), "nascimento");
+            .IsNotNullOrEmpty(this.EmergenciaContato, "emergenciaContato")
+            .IsNotNullOrEmpty(this.EmergenciaCelular, "emergenciaCelular")
+            .IsNotNullOrEmpty(this.Nascimento.ToString(), "nascimento");
 
         AddNotifications(contract);
     }

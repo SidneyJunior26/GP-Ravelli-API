@@ -1058,9 +1058,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/src.csproj",
-      "projectName": "src",
-      "projectPath": "/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/src.csproj",
+      "projectUniqueName": "/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/RavelliCompete.csproj",
+      "projectName": "RavelliCompete",
+      "projectPath": "/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/RavelliCompete.csproj",
       "packagesPath": "/Users/sidneyjunior/.nuget/packages/",
       "outputPath": "/Users/sidneyjunior/Projects/RavelliCompete/RavelliCompete/obj/",
       "projectStyle": "PackageReference",
