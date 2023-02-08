@@ -12,8 +12,10 @@ public class EventGetAllActives
 
     public static IResult Action(bool active, bool subscription, ApplicationDbContext context)
     {
-        var response = context.Evento.Where(e => e.AtivaEvento == active &&
-                                                  e.AtivaInscricao == subscription)
+        var response = context.Event.Where(e => e.AtivaEvento == active &&
+                                                  e.AtivaInscricao == subscription &&
+                                                  e.DataFimInscricao >= DateTime.Now &&
+                                                  e.DataIniInscricao <= DateTime.Now)
                                                   .ToList();
 
         if (response == null)

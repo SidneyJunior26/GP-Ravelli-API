@@ -9,10 +9,11 @@ namespace RavelliCompete.Endpoints.Atletas.Put;
 
 public class AthletePut
 {
-    public static string Template => "/atletas/{cpf}";
+    public static string Template => "/athletes/{cpf}";
     public static string[] Methods => new string[] { HttpMethod.Put.ToString() };
     public static Delegate Handler => Action;
 
+    [Authorize]
     public static async Task<IResult> Action(
         string Cpf, AthleteRequest athleteRequest, ApplicationDbContext context, HttpContext http)
     {

@@ -17,13 +17,13 @@ public partial class ApplicationDbContext : DbContext
     {
     }
 
-    public virtual DbSet<MedicalAthlete> MedicalAthlete { get; set; } = null!;
+    public virtual DbSet<MedicalRecord> MedicalAthlete { get; set; } = null!;
     public virtual DbSet<Athlete> Athlete { get; set; } = null!;
     public virtual DbSet<Cortesia> Cortesia { get; set; } = null!;
-    public virtual DbSet<Evento> Evento { get; set; } = null!;
+    public virtual DbSet<Event> Event { get; set; } = null!;
     public virtual DbSet<Inscricao> Inscricoes { get; set; } = null!;
-    public virtual DbSet<Regulamento> Regulamentos { get; set; } = null!;
-    public virtual DbSet<Subcategoria> Subcategoria { get; set; } = null!;
+    public virtual DbSet<Regulation> Regulamentos { get; set; } = null!;
+    public virtual DbSet<Subcategory> Subcategoria { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -40,7 +40,7 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.UseCollation("utf8_general_ci")
             .HasCharSet("utf8");
 
-        modelBuilder.Entity<MedicalAthlete>(entity =>
+        modelBuilder.Entity<MedicalRecord>(entity =>
         {
             entity.HasKey(e => e.IdAtleta)
                 .HasName("PRIMARY");
@@ -283,7 +283,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("id_inscricao");
         });
 
-        modelBuilder.Entity<Evento>(entity =>
+        modelBuilder.Entity<Event>(entity =>
         {
             entity.ToTable("evento");
 
@@ -569,7 +569,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("valor_pago");
         });
 
-        modelBuilder.Entity<Regulamento>(entity =>
+        modelBuilder.Entity<Regulation>(entity =>
         {
             entity.HasKey(e => e.IdEvento)
                 .HasName("PRIMARY");
@@ -590,7 +590,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("regulamento");
         });
 
-        modelBuilder.Entity<Subcategoria>(entity =>
+        modelBuilder.Entity<Subcategory>(entity =>
         {
             entity.ToTable("subcategoria");
 

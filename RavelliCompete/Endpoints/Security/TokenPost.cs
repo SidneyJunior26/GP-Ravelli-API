@@ -9,19 +9,24 @@ namespace RavelliCompete.Endpoints.Security;
 
 public class TokenPost
 {
-    public static string Template => "/atletas/login";
+    public static string Template => "/athletes/login";
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handler => Action;
 
     public static async Task<IResult> Action(LoginRequest loginRequest, ApplicationDbContext context, IConfiguration config) {
-        var userOk = context.Athlete.FirstOrDefault(a => a.Cpf == loginRequest.Cpf && a.Acesso == loginRequest.Password);
+        var userOk = context.Athlete.FirstOrDefault(a => a.Cpf == loginRequest.Cpf);
 
         if (userOk == null)
             return Results.NotFound();
 
+        if (userOk.Acesso != loginRequest.Password)
+            return Results.Unauthorized();
+
         var subject = new ClaimsIdentity(new Claim[]
         {
-            new Claim("ID", loginRequest.Cpf)
+            new Claim("ID", userOk.Id),
+            new Claim("cpf", loginRequest.Cpf),
+            new Claim("Name", userOk.Nome)
         });
 
         var tokenDescription = new SecurityService(config).GetTokenDescriptor(subject);

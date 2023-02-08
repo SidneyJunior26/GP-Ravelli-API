@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>RavelliCompete</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'RavelliCompete' " />
@@ -18,6 +20,7 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Flunt" Version="2.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
+    <PackageReference Include="Swashbuckle" Version="5.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +46,14 @@
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <None Remove="Endpoints\Security\" />
     <None Remove="Services\Security\" />
+    <None Remove="Endpoints\Subcategory\" />
+    <None Remove="Endpoints\Subcategory\Get\" />
+    <None Remove="Endpoints\Regulation\" />
+    <None Remove="Endpoints\Regulation\Get\" />
+    <None Remove="Endpoints\MedicalRecord\" />
+    <None Remove="Endpoints\MedicalRecord\Get\" />
+    <None Remove="Swashbuckle" />
+    <None Remove="Endpoints\Events\Delete\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infra\" />
@@ -61,5 +72,12 @@
     <Folder Include="Endpoints\Events\Get\" />
     <Folder Include="Endpoints\Security\" />
     <Folder Include="Services\Security\" />
+    <Folder Include="Endpoints\Subcategory\" />
+    <Folder Include="Endpoints\Subcategory\Get\" />
+    <Folder Include="Endpoints\Regulation\" />
+    <Folder Include="Endpoints\Regulation\Get\" />
+    <Folder Include="Endpoints\MedicalRecord\" />
+    <Folder Include="Endpoints\MedicalRecord\Get\" />
+    <Folder Include="Endpoints\Events\Delete\" />
   </ItemGroup>
 </Project>

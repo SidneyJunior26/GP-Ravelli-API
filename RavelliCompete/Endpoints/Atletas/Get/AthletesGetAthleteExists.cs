@@ -5,20 +5,19 @@ using RavelliCompete.Infra.Data;
 
 namespace RavelliCompete.Endpoints.Atletas.Get;
 
-public class AthletesGetById
+public class AthletesGetAthleteExists
 {
-    public static string Template => "/atletas/id/{id}";
+    public static string Template => "/athletes/exists/{cpf}";
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handler => Action;
 
-    public static IResult Action(string id, ApplicationDbContext context)
+    public static async Task<IResult> Action(string cpf, ApplicationDbContext context)
     {
-        var response = context.Athlete.FirstOrDefault(a => a.Id == id);
+        var response = await context.Athlete.FirstOrDefaultAsync(a => a.Cpf == cpf);
 
         if (response == null)
             return Results.NotFound();
 
-        return Results.Ok(response);
+        return Results.Ok();
     }
 }
-

@@ -7,7 +7,7 @@ namespace RavelliCompete.Endpoints.Atletas.GetAll;
 
 public class AthletesGetAll
 {
-    public static string Template => "/atletas";
+    public static string Template => "/athletes";
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handler => Action;
 

@@ -1,17 +1,16 @@
 ﻿using System;
 using RavelliCompete.Infra.Data;
 
-namespace RavelliCompete.Endpoints.Events.Get
+namespace RavelliCompete.Endpoints.Regulation.Get
 {
-    public class EventGyById
+    public class RegulationGetByEventId
     {
-        public static string Template => "/eventos/{id:int}";
+        public static string Template => "/regulation/{eventId:int}";
         public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
         public static Delegate Handler => Action;
 
-        public static IResult Action(int id, ApplicationDbContext context)
-        {
-            var response = context.Event.FirstOrDefault(e => e.Id == id);
+        public static IResult Action(int eventId, ApplicationDbContext context) {
+            var response = context.Regulamentos.FirstOrDefault(e => e.IdEvento == eventId);
 
             if (response == null)
                 return Results.NotFound();

@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using RavelliCompete.Domain.Athletes;
 using RavelliCompete.Infra.Data;
@@ -7,13 +8,14 @@ namespace RavelliCompete.Endpoints.Atletas.Get;
 
 public class AthletesGetByCpf
 {
-    public static string Template => "/atletas/{cpf}";
+    public static string Template => "/athletes/{cpf}";
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handler => Action;
 
-    public static IResult Action(string cpf, ApplicationDbContext context)
+    [Authorize]
+    public static async Task<IResult> Action(string cpf, ApplicationDbContext context)
     {
-        var response = context.Athlete.FirstOrDefault(a => a.Cpf == cpf);
+        var response = await context.Athlete.FirstOrDefaultAsync(a => a.Cpf == cpf);
 
         if (response == null)
             return Results.NotFound();
@@ -21,4 +23,3 @@ public class AthletesGetByCpf
         return Results.Ok(response);
     }
 }
-
