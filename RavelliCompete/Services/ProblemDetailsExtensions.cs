@@ -2,7 +2,7 @@
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Identity;
 
-namespace RavelliCompete.Endpoints;
+namespace RavelliCompete.Services;
 
 public static class ProblemDetailsExtensions
 {

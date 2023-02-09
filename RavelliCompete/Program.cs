@@ -2,11 +2,6 @@
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using RavelliCompete.Endpoints.Atletas.Delete;
-using RavelliCompete.Endpoints.Atletas.Get;
-using RavelliCompete.Endpoints.Atletas.GetAll;
-using RavelliCompete.Endpoints.Atletas.Post;
-using RavelliCompete.Endpoints.Atletas.Put;
 using RavelliCompete.Endpoints.Events.Get;
 using RavelliCompete.Infra.Data;
 using RavelliCompete.Services.Athletes;
@@ -19,6 +14,8 @@ using RavelliCompete.Endpoints.MedicalRecord.Get;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using RavelliCompete.Endpoints.Events.Delete;
+using Swashbuckle.Swagger;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,11 +24,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c => {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GP Ravelli API", Version = "v1" });
+builder.Services.AddSwaggerGen(c =>
+{    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoAPI", Version = "v1" });
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
+
+    var security = new Dictionary<string, IEnumerable<string>>
+    {
+        {"Bearer", new string[] { }},
+    };
+
+    c.AddSecurityDefinition(
+        "Bearer",
+        new OpenApiSecurityScheme {
+            Description = "Copie 'Bearer ' + token'",
+            Name = "Authorization",
+        });
 });
 
 var connectionString = builder.Configuration["ConnectionStrings:MySql"];
@@ -95,35 +104,27 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 /* Adding EndPoints */
 
-// Athletes
-app.MapMethods(AthletesGetAll.Template, AthletesGetAll.Methods, AthletesGetAll.Handler);
-app.MapMethods(AthletesGetByCpf.Template, AthletesGetByCpf.Methods, AthletesGetByCpf.Handler);
-app.MapMethods(AthletesGetAthleteExists.Template, AthletesGetAthleteExists.Methods, AthletesGetAthleteExists.Handler);
+//app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handler);
 
-app.MapMethods(AthletePost.Template, AthletePost.Methods, AthletePost.Handler);
-app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handler);
+//// Medical Records
+//app.MapMethods(MedicalRecordGetByAthleteId.Template, MedicalRecordGetByAthleteId.Methods, MedicalRecordGetByAthleteId.Handler);
 
-app.MapMethods(AthletePut.Template, AthletePut.Methods, AthletePut.Handler);
+//// Events
+//app.MapMethods(EventGetAll.Template, EventGetAll.Methods, EventGetAll.Handler);
+//app.MapMethods(EventGetAllActives.Template, EventGetAllActives.Methods, EventGetAllActives.Handler);
+//app.MapMethods(EventGetAllComing.Template, EventGetAllComing.Methods, EventGetAllComing.Handler);
+//app.MapMethods(EventGyById.Template, EventGyById.Methods, EventGyById.Handler);
+//app.MapMethods(EventDeleteById.Template, EventDeleteById.Methods, EventDeleteById.Handler);
 
-app.MapMethods(AthleteDelete.Template, AthleteDelete.Methods, AthleteDelete.Handler);
+//// Subcategory
+//app.MapMethods(SubcategoryGetAllFiltered.Template, SubcategoryGetAllFiltered.Methods, SubcategoryGetAllFiltered.Handler);
 
-// Medical Records
-app.MapMethods(MedicalRecordGetByAthleteId.Template, MedicalRecordGetByAthleteId.Methods, MedicalRecordGetByAthleteId.Handler);
-
-// Events
-app.MapMethods(EventGetAll.Template, EventGetAll.Methods, EventGetAll.Handler);
-app.MapMethods(EventGetAllActives.Template, EventGetAllActives.Methods, EventGetAllActives.Handler);
-app.MapMethods(EventGetAllComing.Template, EventGetAllComing.Methods, EventGetAllComing.Handler);
-app.MapMethods(EventGyById.Template, EventGyById.Methods, EventGyById.Handler);
-app.MapMethods(EventDeleteById.Template, EventDeleteById.Methods, EventDeleteById.Handler);
-
-// Subcategory
-app.MapMethods(SubcategoryGetAllFiltered.Template, SubcategoryGetAllFiltered.Methods, SubcategoryGetAllFiltered.Handler);
-
-// Regulation
-app.MapMethods(RegulationGetByEventId.Template, RegulationGetByEventId.Methods, RegulationGetByEventId.Handler);
+//// Regulation
+//app.MapMethods(RegulationGetByEventId.Template, RegulationGetByEventId.Methods, RegulationGetByEventId.Handler);
 
 app.UseExceptionHandler("/error");
 
@@ -140,6 +141,10 @@ app.Map("/error", (HttpContext http) => {
     }
 
     return Results.Problem(title: "An error ocurred", statusCode: 500);
+});
+
+app.UseEndpoints(endpoints => {
+    endpoints.MapControllers();
 });
 
 app.Run();

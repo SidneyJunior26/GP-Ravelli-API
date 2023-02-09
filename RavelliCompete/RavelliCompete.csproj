@@ -11,7 +11,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'RavelliCompete' " />
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -34,12 +34,9 @@
     <None Remove="Endpoints\" />
     <None Remove="Endpoints\Atletas\" />
     <None Remove="Endpoints\Atletas\Get\" />
-    <None Remove="Endpoints\Atletas\Post\" />
     <None Remove="Dapper" />
-    <None Remove="Endpoints\Atletas\Delete\" />
     <None Remove="Services\" />
     <None Remove="Services\Athletes\" />
-    <None Remove="Endpoints\Atletas\Put\" />
     <None Remove="Flunt" />
     <None Remove="Endpoints\Events\" />
     <None Remove="Endpoints\Events\Get\" />
@@ -54,6 +51,8 @@
     <None Remove="Endpoints\MedicalRecord\Get\" />
     <None Remove="Swashbuckle" />
     <None Remove="Endpoints\Events\Delete\" />
+    <None Remove="Controllers\" />
+    <None Remove="Controllers\Athlete\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infra\" />
@@ -63,11 +62,8 @@
     <Folder Include="Domain\Cortesias\" />
     <Folder Include="Endpoints\" />
     <Folder Include="Endpoints\Atletas\" />
-    <Folder Include="Endpoints\Atletas\Post\" />
-    <Folder Include="Endpoints\Atletas\Delete\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Athletes\" />
-    <Folder Include="Endpoints\Atletas\Put\" />
     <Folder Include="Endpoints\Events\" />
     <Folder Include="Endpoints\Events\Get\" />
     <Folder Include="Endpoints\Security\" />
@@ -79,5 +75,7 @@
     <Folder Include="Endpoints\MedicalRecord\" />
     <Folder Include="Endpoints\MedicalRecord\Get\" />
     <Folder Include="Endpoints\Events\Delete\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Controllers\Athlete\" />
   </ItemGroup>
 </Project>

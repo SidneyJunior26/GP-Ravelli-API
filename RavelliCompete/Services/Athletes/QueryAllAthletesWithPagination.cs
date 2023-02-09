@@ -19,7 +19,7 @@ public class QueryAllAthletesWithPagination
         var db = new MySqlConnection(_configuration["ConnectionStrings:MySql"]);
         var query = $@"SELECT *
                 FROM atleta
-                ORDER BY Data DESC
+                ORDER BY nome DESC
                 LIMIT @rows OFFSET @page";
 
         return await db.QueryAsync<Athlete>(

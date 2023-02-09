@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RavelliCompete.Endpoints.Atletas;
+namespace RavelliCompete.Controllers.Athlete;
 
 public record AthletePostRequest : AthleteRequest
 {
