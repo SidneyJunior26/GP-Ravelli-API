@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RavelliCompete.Domain.Athletes;
 
-public partial class MedicalRecord
+public partial class RegistroMedico
 {
     public string IdAtleta { get; set; } = null!;
     public bool? Plano { get; set; }

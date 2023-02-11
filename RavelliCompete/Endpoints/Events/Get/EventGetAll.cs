@@ -11,7 +11,7 @@ public class EventGetAll
     public static Delegate Handler => Action;
 
     public static IResult Action(ApplicationDbContext context) {
-        var response = context.Event.OrderByDescending(e => e.Data).ToList();
+        var response = context.Eventos.OrderByDescending(e => e.Data).ToList();
 
         if (response == null)
             return Results.NotFound();

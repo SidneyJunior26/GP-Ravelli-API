@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RavelliCompete.Domain.Eventos;
 
-public partial class Subcategory
+public partial class Subcategoria
 {
     public int Id { get; set; }
     public int IdEvento { get; set; }

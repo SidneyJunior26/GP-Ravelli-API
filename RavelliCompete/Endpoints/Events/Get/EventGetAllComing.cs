@@ -10,7 +10,7 @@ public class EventGetAllComing {
     public static Delegate Handler => Action;
 
     public static IResult Action(ApplicationDbContext context) {
-        var response = context.Event.Where(e => e.DataIniInscricao > DateTime.Now)
+        var response = context.Eventos.Where(e => e.DataIniInscricao > DateTime.Now)
                                                   .OrderByDescending(e => e.DataIniInscricao)
                                                   .ToList();
 

@@ -13,7 +13,7 @@ public class MedicalRecordGetByAthleteId
 
     [Authorize]
     public static IResult Action(string idAthlete, ApplicationDbContext context) {
-        var response = context.MedicalAthlete.FirstOrDefault(m => m.IdAtleta == idAthlete);
+        var response = context.RegistrosMedicos.FirstOrDefault(m => m.IdAtleta == idAthlete);
 
         if (response == null)
             return Results.NotFound();

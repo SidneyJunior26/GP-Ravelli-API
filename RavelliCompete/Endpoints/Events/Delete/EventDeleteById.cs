@@ -11,12 +11,12 @@ public class EventDeleteById
     public static Delegate Handler => Action;
 
     public static async Task<IResult> Action([FromRoute] int id, ApplicationDbContext context) {
-        var eventInstance = context.Event.FirstOrDefault(c => c.Id == id);
+        var eventInstance = context.Eventos.FirstOrDefault(c => c.Id == id);
 
         if (eventInstance == null)
             return Results.NotFound();
 
-        context.Event.Remove(eventInstance);
+        context.Eventos.Remove(eventInstance);
         await context.SaveChangesAsync();
 
         return Results.Ok();

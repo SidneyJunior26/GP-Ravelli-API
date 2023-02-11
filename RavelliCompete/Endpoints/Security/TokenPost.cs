@@ -14,7 +14,7 @@ public class TokenPost
     public static Delegate Handler => Action;
 
     public static async Task<IResult> Action(LoginRequest loginRequest, ApplicationDbContext context, IConfiguration config) {
-        var userOk = context.Athlete.FirstOrDefault(a => a.Cpf == loginRequest.Cpf);
+        var userOk = context.Atletas.FirstOrDefault(a => a.Cpf == loginRequest.Cpf);
 
         if (userOk == null)
             return Results.NotFound();

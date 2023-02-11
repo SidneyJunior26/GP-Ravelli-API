@@ -10,11 +10,11 @@ using RavelliCompete.Domain.Athletes;
 
 namespace RavelliCompete.Domain.Eventos;
 
-public partial class Event : Notifiable<Notification>
+public partial class Evento : Notifiable<Notification>
 {
-    public Event()
+    public Evento()
     {
-        var contract = new Contract<Event>()
+        var contract = new Contract<Evento>()
             .IsNullOrEmpty(this.Nome, "nome");
 
         AddNotifications(contract);

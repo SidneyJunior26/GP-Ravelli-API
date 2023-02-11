@@ -11,7 +11,7 @@ namespace RavelliCompete.Endpoints.Events.Get
 
         public static IResult Action(int id, ApplicationDbContext context)
         {
-            var response = context.Event.FirstOrDefault(e => e.Id == id);
+            var response = context.Eventos.FirstOrDefault(e => e.Id == id);
 
             if (response == null)
                 return Results.NotFound();

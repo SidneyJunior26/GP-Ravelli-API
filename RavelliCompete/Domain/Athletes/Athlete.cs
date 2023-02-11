@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text.Json.Serialization;
 using Flunt.Notifications;
 using Flunt.Validations;
-using RavelliCompete.Controllers.Athlete;
+using RavelliCompete.Controllers.Atleta;
 
 namespace RavelliCompete.Domain.Athletes;
 
@@ -52,7 +52,7 @@ public class Athlete : Notifiable<Notification>
     public string? Federacao { get; set; }
     public Athlete() { }
 
-    public Athlete(AthleteRequest athlete)
+    public Athlete(AtletaRequest athlete)
     {
         Id = new Guid().ToString();
 
@@ -93,7 +93,7 @@ public class Athlete : Notifiable<Notification>
         ValidateAthlete();
     }
 
-    public void EditAthlete(AthleteRequest athlete)
+    public void EditAthlete(AtletaRequest athlete)
     {
         Nome = athlete.Nome;
         Nascimento = athlete.Nascimento;

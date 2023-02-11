@@ -17,13 +17,13 @@ public partial class ApplicationDbContext : DbContext
     {
     }
 
-    public virtual DbSet<MedicalRecord> MedicalAthlete { get; set; } = null!;
-    public virtual DbSet<Athlete> Athlete { get; set; } = null!;
-    public virtual DbSet<Cortesia> Cortesia { get; set; } = null!;
-    public virtual DbSet<Event> Event { get; set; } = null!;
+    public virtual DbSet<RegistroMedico> RegistrosMedicos { get; set; } = null!;
+    public virtual DbSet<Athlete> Atletas { get; set; } = null!;
+    public virtual DbSet<Cortesia> Cortesias { get; set; } = null!;
+    public virtual DbSet<Evento> Eventos { get; set; } = null!;
     public virtual DbSet<Inscricao> Inscricoes { get; set; } = null!;
-    public virtual DbSet<Regulation> Regulamentos { get; set; } = null!;
-    public virtual DbSet<Subcategory> Subcategoria { get; set; } = null!;
+    public virtual DbSet<Regulamento> Regulamentos { get; set; } = null!;
+    public virtual DbSet<Subcategoria> Subcategoria { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -40,7 +40,7 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.UseCollation("utf8_general_ci")
             .HasCharSet("utf8");
 
-        modelBuilder.Entity<MedicalRecord>(entity =>
+        modelBuilder.Entity<RegistroMedico>(entity =>
         {
             entity.HasKey(e => e.IdAtleta)
                 .HasName("PRIMARY");
@@ -283,7 +283,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("id_inscricao");
         });
 
-        modelBuilder.Entity<Event>(entity =>
+        modelBuilder.Entity<Evento>(entity =>
         {
             entity.ToTable("evento");
 
@@ -569,7 +569,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("valor_pago");
         });
 
-        modelBuilder.Entity<Regulation>(entity =>
+        modelBuilder.Entity<Regulamento>(entity =>
         {
             entity.HasKey(e => e.IdEvento)
                 .HasName("PRIMARY");
@@ -590,7 +590,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("regulamento");
         });
 
-        modelBuilder.Entity<Subcategory>(entity =>
+        modelBuilder.Entity<Subcategoria>(entity =>
         {
             entity.ToTable("subcategoria");
 
