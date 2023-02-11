@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
 using RavelliCompete.Endpoints.Security;
 using RavelliCompete.Infra.Data;
 using RavelliCompete.Services.Security;
+using static Dapper.SqlMapper;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -50,9 +54,16 @@ public class SecurityController : ControllerBase
             new Claim("Name", userOk.Nome)
         });
 
-        var tokenDescription = new SecurityService(_config).GetTokenDescriptor(subject);
-
         var tokenHandler = new JwtSecurityTokenHandler();
+        var key = Encoding.ASCII.GetBytes(_config["JwtBearerTokenSettings:SecretKey"]);
+        var tokenDescription = new SecurityTokenDescriptor {
+            Subject = subject,
+            Audience = _config["JwtBearerTokenSettings:Audience"],
+            Issuer = _config["JwtBearerTokenSettings:Issuer"],
+            Expires = DateTime.UtcNow.AddHours(2),
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+        };
+
         var token = tokenHandler.CreateToken(tokenDescription);
 
         return Ok(new {

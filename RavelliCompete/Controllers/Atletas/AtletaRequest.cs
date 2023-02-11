@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RavelliCompete.Controllers.Atleta;
+namespace RavelliCompete.Controllers.Atletas;
 
 public record AtletaRequest(string Nome, DateTime Nascimento, string Sexo,
     string Cpf, string Rg, string Responsavel, string Endereco, string Numero, string Complemento,

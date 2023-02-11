@@ -2,32 +2,27 @@
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using RavelliCompete.Endpoints.Events.Get;
 using RavelliCompete.Infra.Data;
 using RavelliCompete.Services.Athletes;
 using Microsoft.AspNetCore.Diagnostics;
 using MySqlConnector;
 using RavelliCompete.Endpoints.Security;
 using RavelliCompete.Endpoints.Subcategory.Get;
-using RavelliCompete.Endpoints.Regulation.Get;
-using RavelliCompete.Endpoints.MedicalRecord.Get;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using RavelliCompete.Endpoints.Events.Delete;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
-{    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GP Ravelli API", Version = "v1" });
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GP Ravelli API", Version = "v1" });
 
     var security = new Dictionary<string, IEnumerable<string>>
     {
@@ -37,9 +32,36 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityDefinition(
         "Bearer",
         new OpenApiSecurityScheme {
-            Description = "Copie 'Bearer ' + token'",
+            Description = @"Cabeçalho de autorização JWT usando o esquema Bearer. \r\n\r\n 
+                      Digite 'Bearer' [espaço] e, em seguida, seu token na entrada de texto abaixo.
+                      \r\n\r\nExemplo: 'Bearer 12345abcdef'",
             Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
         });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+      {
+        {
+          new OpenApiSecurityScheme
+          {
+            Reference = new OpenApiReference
+              {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+              },
+              Scheme = "oauth2",
+              Name = "Bearer",
+              In = ParameterLocation.Header,
+
+            },
+            new List<string>()
+          }
+        });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
 });
 
 var connectionString = builder.Configuration["ConnectionStrings:MySql"];
@@ -70,25 +92,31 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 builder.Services.AddScoped<QueryAllAthletesWithPagination>();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-        });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(
+//        builder =>
+//        {
+//            builder.AllowAnyOrigin()
+//                                .AllowAnyHeader()
+//                                .AllowAnyMethod();
+//        });
+//});
 
 builder.WebHost.UseUrls("http://localhost:3031");
 
 var app = builder.Build();
 
-app.UseCors();
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
@@ -101,9 +129,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
 
-app.UseRouting();
 
 /* Adding EndPoints */
 

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text.Json.Serialization;
 using Flunt.Notifications;
 using Flunt.Validations;
-using RavelliCompete.Controllers.Atleta;
+using RavelliCompete.Controllers.Atletas;
 
 namespace RavelliCompete.Domain.Athletes;
 

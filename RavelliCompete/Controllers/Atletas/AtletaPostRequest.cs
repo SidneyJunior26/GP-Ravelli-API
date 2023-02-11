@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RavelliCompete.Controllers.Atleta;
+namespace RavelliCompete.Controllers.Atletas;
 
 public record AtletaPostRequest : AtletaRequest
 {

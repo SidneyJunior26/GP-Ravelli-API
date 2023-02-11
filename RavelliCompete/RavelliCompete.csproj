@@ -30,28 +30,20 @@
     <None Remove="Domain\" />
     <None Remove="Domain\Eventos\" />
     <None Remove="Domain\Cortesias\" />
-    <None Remove="Endpoints\" />
     <None Remove="Endpoints\Atletas\Get\" />
     <None Remove="Dapper" />
     <None Remove="Services\" />
     <None Remove="Services\Athletes\" />
     <None Remove="Flunt" />
-    <None Remove="Endpoints\Events\" />
-    <None Remove="Endpoints\Events\Get\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
-    <None Remove="Endpoints\Security\" />
     <None Remove="Services\Security\" />
-    <None Remove="Endpoints\Subcategory\" />
-    <None Remove="Endpoints\Subcategory\Get\" />
-    <None Remove="Endpoints\Regulation\" />
-    <None Remove="Endpoints\Regulation\Get\" />
-    <None Remove="Endpoints\MedicalRecord\" />
-    <None Remove="Endpoints\MedicalRecord\Get\" />
     <None Remove="Swashbuckle" />
-    <None Remove="Endpoints\Events\Delete\" />
     <None Remove="Controllers\" />
-    <None Remove="Controllers\Atleta\" />
     <None Remove="Controllers\Secutiry\" />
+    <None Remove="Controllers\Eventos\" />
+    <None Remove="Controllers\RegistrosMedicos\" />
+    <None Remove="Controllers\Regulamentos\" />
+    <None Remove="Controllers\SubCategorias\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infra\" />
@@ -59,22 +51,14 @@
     <Folder Include="Domain\" />
     <Folder Include="Domain\Eventos\" />
     <Folder Include="Domain\Cortesias\" />
-    <Folder Include="Endpoints\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Athletes\" />
-    <Folder Include="Endpoints\Events\" />
-    <Folder Include="Endpoints\Events\Get\" />
-    <Folder Include="Endpoints\Security\" />
     <Folder Include="Services\Security\" />
-    <Folder Include="Endpoints\Subcategory\" />
-    <Folder Include="Endpoints\Subcategory\Get\" />
-    <Folder Include="Endpoints\Regulation\" />
-    <Folder Include="Endpoints\Regulation\Get\" />
-    <Folder Include="Endpoints\MedicalRecord\" />
-    <Folder Include="Endpoints\MedicalRecord\Get\" />
-    <Folder Include="Endpoints\Events\Delete\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Controllers\Atleta\" />
     <Folder Include="Controllers\Secutiry\" />
+    <Folder Include="Controllers\Eventos\" />
+    <Folder Include="Controllers\RegistrosMedicos\" />
+    <Folder Include="Controllers\Regulamentos\" />
+    <Folder Include="Controllers\SubCategorias\" />
   </ItemGroup>
 </Project>
