@@ -10,5 +10,5 @@ public record AtletaRequest(string Nome, DateTime Nascimento, string Sexo,
     string MktBikePreferida, string MktAro, string MktCambio,
     string MktFreio, string MktSuspensao, string MktMarcaPneu,
     string MktModeloPneu, string MktTenis, string Acesso,
-    bool Ativo, string Federacao);
+    bool Ativo, string Federacao, int Nivel);
 

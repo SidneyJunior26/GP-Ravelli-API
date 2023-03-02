@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 using Flunt.Notifications;
 using Flunt.Validations;
 using RavelliCompete.Controllers.Atletas;
 
-namespace RavelliCompete.Domain.Athletes;
+namespace RavelliCompete.Domain.Atletas;
 
-public class Athlete : Notifiable<Notification>
+public class Atleta : Notifiable<Notification>
 {
     public string Id { get; set; } = null!;
     public string Nome { get; set; } = null!;
@@ -50,9 +45,10 @@ public class Athlete : Notifiable<Notification>
     public string Acesso { get; set; } = null!;
     public bool Ativo { get; set; }
     public string? Federacao { get; set; }
-    public Athlete() { }
+    public int Nivel { get; set; }
+    public Atleta() { }
 
-    public Athlete(AtletaRequest athlete)
+    public Atleta(AtletaRequest athlete)
     {
         Id = new Guid().ToString();
 
@@ -63,7 +59,7 @@ public class Athlete : Notifiable<Notification>
         Rg = athlete.Rg;
         Responsavel = athlete.Responsavel;
         Endereco = athlete.Endereco;
-        Numero = athlete.Numero == string.Empty ? "SN" : athlete.Numero;
+        Numero = athlete.Numero;
         Complemento = athlete.Complemento;
         Cep = athlete.Cep;
         Cidade = athlete.Cidade;
@@ -89,6 +85,7 @@ public class Athlete : Notifiable<Notification>
         NktModelopneu = athlete.MktModeloPneu;
         MktTenis = athlete.MktTenis;
         Federacao = athlete.Federacao;
+        Nivel = 1;
 
         ValidateAthlete();
     }
@@ -100,7 +97,7 @@ public class Athlete : Notifiable<Notification>
         Sexo = athlete.Sexo;
         Responsavel = athlete.Responsavel;
         Endereco = athlete.Endereco;
-        Numero = athlete.Numero == string.Empty ? "SN" : athlete.Numero;
+        Numero = athlete.Numero;
         Complemento = athlete.Complemento;
         Cep = athlete.Cep;
         Cidade = athlete.Cidade;
@@ -126,13 +123,14 @@ public class Athlete : Notifiable<Notification>
         NktModelopneu = athlete.MktModeloPneu;
         MktTenis = athlete.MktTenis;
         Federacao = athlete.Federacao;
+        Nivel = 1;
 
         ValidateAthlete();
     }
 
     private void ValidateAthlete()
     {
-        var contract = new Contract<Athlete>()
+        var contract = new Contract<Atleta>()
             .IsNotNullOrEmpty(this.Nome, "nome")
             .IsNotNullOrEmpty(this.Nascimento.ToString(), "nascimento")
             .IsNotNullOrEmpty(this.Sexo, "sexo")

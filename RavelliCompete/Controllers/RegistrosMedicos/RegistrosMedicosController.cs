@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RavelliCompete.Infra.Data;
 
@@ -32,13 +28,13 @@ public class RegistrosMedicosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [Route("{idAtleta}")]
     [Authorize]
-    public IResult ConsultarRegistro(string idAtleta) {
+    public IActionResult ConsultarRegistro(string idAtleta) {
         var response = _context.RegistrosMedicos.FirstOrDefault(m => m.IdAtleta == idAtleta);
 
         if (response == null)
-            return Results.NotFound();
+            return NotFound();
 
-        return Results.Ok(response);
+        return Ok(response);
     }
 }
 

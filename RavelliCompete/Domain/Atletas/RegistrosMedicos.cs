@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace RavelliCompete.Domain.Athletes;
+﻿namespace RavelliCompete.Domain.Atletas;
 
 public partial class RegistroMedico
 {

@@ -1,25 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 using Flunt.Notifications;
-using Flunt.Validations;
-using RavelliCompete.Domain.Athletes;
+using RavelliCompete.Controllers.Eventos;
 
 namespace RavelliCompete.Domain.Eventos;
 
 public partial class Evento : Notifiable<Notification>
 {
-    public Evento()
-    {
-        var contract = new Contract<Evento>()
-            .IsNullOrEmpty(this.Nome, "nome");
-
-        AddNotifications(contract);
-    }
-
     [Key]
     public int Id { get; set; }
     public string Nome { get; set; } = null!;
@@ -46,7 +32,7 @@ public partial class Evento : Notifiable<Notification>
     public string Pacote2Desc { get; set; } = null!;
     public string Pacote3Desc { get; set; } = null!;
     public string Pacote4Desc { get; set; } = null!;
-    public bool? Pacote1Ativo { get; set; }
+    public int? Pacote1Ativo { get; set; }
     public int? Pacote2Ativo { get; set; }
     public int? Pacote3Ativo { get; set; }
     public int? Pacote4Ativo { get; set; }
@@ -75,4 +61,19 @@ public partial class Evento : Notifiable<Notification>
     public string? Pacote4V1Pseg { get; set; }
     public string? Pacote4V2Pseg { get; set; }
     public string? Pacote4V3Pseg { get; set; }
+    public Evento() {}
+
+    public Evento(EventoRequest eventoRequest)
+    {
+        (Nome, Descricao, Local, Data, DataIniInscricao, DataFimInscricao,
+         DataDesconto, DataValorNormal, Valor1, Valor2, ValorNormal, Pacote2V1,
+         Pacote2V2, Pacote2V3, Pacote3V1, Pacote3V2, Pacote3V3, Pacote4V1,
+         Pacote4V2, Pacote4V3, Pacote1Desc, Pacote2Desc, Pacote3Desc, Pacote4Desc,
+         Pacote1Ativo, Pacote2Ativo, Pacote3Ativo, Pacote4Ativo, Categoria, BoletoInf1,
+         BoletoInf2, BoletoInf3, BoletoInstrucao1, BoletoInstrucao2, BoletoInstrucao3,
+         ObsTela, TxtEmailCadastro, TxtEmailBaixa, AtivaInscricao, AtivaEvento, EventoTipo,
+         Pacote1V1Pseg, Pacote1V2Pseg, Pacote1V3Pseg, Pacote2V1Pseg, Pacote2V2Pseg,
+         Pacote2V3Pseg, Pacote3V1Pseg, Pacote3V2Pseg, Pacote3V3Pseg, Pacote4V1Pseg,
+         Pacote4V2Pseg, Pacote4V3Pseg) = eventoRequest;
+    }
 }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RavelliCompete.Infra.Data;
 using RavelliCompete.Services;
-using RavelliCompete.Services.Athletes;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,22 +25,53 @@ public class AtletasController : ControllerBase
     /* GET */
 
     /// <summary>
-    /// Obtém uma lista de todos os atletas com paginação.
+    /// Obtém uma lista de todos os atletas.
     /// </summary>
-    /// <param name="paginaNumero">Número da página para recuperar (opcional, padrão é 1).</param>
-    /// <param name="paginaTamanho">Tamanho da página para recuperar (opcional, padrão é 10).</param>
     /// <response code="200">Retorna os dados do Atleta.</response>
     /// <response code="404">Retorna que o Atleta não existe na base de dados.</response>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [AllowAnonymous]
-    public async Task<IActionResult> ConsultarTodosAtletas([FromServices] QueryAllAthletesWithPagination query, int? paginaNumero, int? paginaTamanho) {
+    public IActionResult ConsultarTodosAtletas() {
+        var response = _context.Atletas.OrderBy(a => a.Nome.Trim()).ToList();
 
-        var paginaNumeroAtual = paginaNumero ?? 1;
-        var paginaTamanhoAtual = paginaTamanho ?? paginaTamanhoPadrao;
+        if (response == null)
+            return NotFound(new { message = "Nenhum usuário encontrado" });
 
-        var response = await query.Execute(paginaNumeroAtual, paginaTamanhoAtual);
+        return Ok(response);
+    }
+
+    /// <summary>
+    /// Obtém uma lista de todos os atletas por nome.
+    /// </summary>
+    /// <response code="200">Retorna os dados do Atleta.</response>
+    /// <response code="404">Retorna que o Atleta não existe na base de dados.</response>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Route("nome/{nome}")]
+    [AllowAnonymous]
+    public IActionResult ConsultarAtletasPorNome(string nome) {
+        var response = _context.Atletas.Where(a => a.Nome.Contains(nome)).ToList();
+
+        if (response == null)
+            return NotFound(new { message = "Nenhum usuário encontrado" });
+
+        return Ok(response);
+    }
+    /// <summary>
+    /// Obtém uma lista de todos os atletas por CPF.
+    /// </summary>
+    /// <response code="200">Retorna os dados do Atleta.</response>
+    /// <response code="404">Retorna que o Atleta não existe na base de dados.</response>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Route("cpf/{cpf}")]
+    [AllowAnonymous]
+    public IActionResult ConsultarAtletasPorCPF(string cpf) {
+        var response = _context.Atletas.Where(a => a.Cpf.Contains(cpf)).ToList();
 
         if (response == null)
             return NotFound(new { message = "Nenhum usuário encontrado" });
@@ -109,13 +135,13 @@ public class AtletasController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [AllowAnonymous]
-    public async Task<IActionResult> CadastrarAtleta(AtletaPostRequest athleteRequest) {
+    public async Task<IActionResult> CadastrarAtleta(AtletaRequest athleteRequest) {
 
         if (!await AthleteExists(athleteRequest)) {
             return NotFound(new { message = "Usuário não encontrado"});
         }
 
-        var newAthlete = new RavelliCompete.Domain.Athletes.Athlete(athleteRequest);
+        var newAthlete = new Domain.Atletas.Atleta(athleteRequest);
 
         await _context.Atletas.AddAsync(newAthlete);
         await _context.SaveChangesAsync();
@@ -139,7 +165,7 @@ public class AtletasController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [Route("{cpf}")]
     [Authorize]
-    public async Task<IActionResult> AtualizarAtleta([FromRoute] string Cpf, AtletaPostRequest athleteRequest) {
+    public async Task<IActionResult> AtualizarAtleta([FromRoute] string Cpf, AtletaRequest athleteRequest) {
 
         var athlete = _context.Atletas.FirstOrDefault(c => c.Cpf == Cpf);
 
@@ -183,7 +209,7 @@ public class AtletasController : ControllerBase
         return Ok();
     }
 
-    private async Task<bool> AthleteExists(AtletaPostRequest athleteRequest) {
+    private async Task<bool> AthleteExists(AtletaRequest athleteRequest) {
         var athlete = await _context.Atletas.FirstOrDefaultAsync(a => a.Cpf == athleteRequest.Cpf ||
                                                                          a.Rg == athleteRequest.Rg ||
                                                                          a.Email == athleteRequest.Email);

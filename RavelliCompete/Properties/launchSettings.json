@@ -12,7 +12,7 @@
     "RavelliCompete": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:28117",
+      "applicationUrl": "http://localhost:55861",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

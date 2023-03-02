@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using RavelliCompete.Domain;
-using RavelliCompete.Domain.Athletes;
+using RavelliCompete.Domain.Atletas;
 using RavelliCompete.Domain.Cortesias;
 using RavelliCompete.Domain.Eventos;
 
@@ -18,7 +14,7 @@ public partial class ApplicationDbContext : DbContext
     }
 
     public virtual DbSet<RegistroMedico> RegistrosMedicos { get; set; } = null!;
-    public virtual DbSet<Athlete> Atletas { get; set; } = null!;
+    public virtual DbSet<Atleta> Atletas { get; set; } = null!;
     public virtual DbSet<Cortesia> Cortesias { get; set; } = null!;
     public virtual DbSet<Evento> Eventos { get; set; } = null!;
     public virtual DbSet<Inscricao> Inscricoes { get; set; } = null!;
@@ -110,7 +106,7 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Pressaoalta).HasColumnName("pressaoalta");
         });
 
-        modelBuilder.Entity<Athlete>(entity =>
+        modelBuilder.Entity<Atleta>(entity =>
         {
             entity.ToTable("atleta");
 
@@ -257,6 +253,10 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Uf)
                 .HasMaxLength(2)
                 .HasColumnName("uf");
+
+            entity.Property(e => e.Nivel)
+                .HasMaxLength(1)
+                .HasColumnName("nivel");
         });
 
         modelBuilder.Entity<Cortesia>(entity =>
