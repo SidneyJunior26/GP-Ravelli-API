@@ -49,7 +49,7 @@ public class EventosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [AllowAnonymous]
-    public IActionResult ConsultarEventosAtivos(bool eventoAtivo, bool inscricoesAtivas) {
+    public IActionResult ConsultarEventosAtivos(int eventoAtivo, int inscricoesAtivas) {
         var eventos = _context.Eventos.Where(e => e.AtivaEvento == eventoAtivo &&
                                                   e.AtivaInscricao == inscricoesAtivas &&
                                                   e.DataFimInscricao >= DateTime.Today &&
@@ -74,7 +74,7 @@ public class EventosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [AllowAnonymous]
     public IActionResult ConsultarProximosEventos() {
-        var eventos = _context.Eventos.Where(e => e.DataIniInscricao > DateTime.Now && e.AtivaEvento == true)
+        var eventos = _context.Eventos.Where(e => e.DataIniInscricao > DateTime.Now && e.AtivaEvento == 1)
                                                   .OrderByDescending(e => e.DataIniInscricao)
                                                   .ToList();
 

@@ -46,9 +46,9 @@ public partial class Evento : Notifiable<Notification>
     public string? ObsTela { get; set; }
     public string? TxtEmailCadastro { get; set; }
     public string? TxtEmailBaixa { get; set; }
-    public bool AtivaInscricao { get; set; }
-    public bool AtivaEvento { get; set; }
-    public bool? EventoTipo { get; set; }
+    public int AtivaInscricao { get; set; }
+    public int AtivaEvento { get; set; }
+    public int? EventoTipo { get; set; }
     public string? Pacote1V1Pseg { get; set; }
     public string? Pacote1V2Pseg { get; set; }
     public string? Pacote1V3Pseg { get; set; }
